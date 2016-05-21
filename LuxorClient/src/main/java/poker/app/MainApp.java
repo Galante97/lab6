@@ -42,6 +42,11 @@ public class MainApp extends Application {
 	private BorderPane rootLayout;
 
 	private PokerHub pHub = null;
+	
+	public PokerHub getpHub() {
+		return pHub;
+	}
+	
 	private PokerClient pClient = null;
 
 	private PokerTableController pokerController = null;

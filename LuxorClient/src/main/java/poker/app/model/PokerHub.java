@@ -31,6 +31,12 @@ public class PokerHub extends Hub {
 	private GamePlay HubGamePlay;
 	private int iDealNbr = 0;
 	private eGameState eGameState;
+	private Deck deck;
+	private ArrayList<Card> CommunityCards;
+	
+	public Deck getdeck(){
+		return deck;
+	}
 
 	public PokerHub(int port) throws IOException {
 		super(port);
@@ -182,6 +188,10 @@ public class PokerHub extends Hub {
 									.isFolded() == false) {
 						HubGamePlay.getPlayerHand(HubGamePlay.getPlayerByPosition(n).getPlayerID())
 								.Draw(HubGamePlay.getGameDeck());
+						
+						Action act = new Action(eAction.Draw, HubGamePlay.getPlayerByPosition(n));
+						messageReceived(HubGamePlay.getPlayerByPosition(n).getiPokerClientID(), act);
+						
 					}
 				}
 

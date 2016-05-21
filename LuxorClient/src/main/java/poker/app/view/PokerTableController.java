@@ -15,6 +15,7 @@ import javax.xml.bind.Marshaller;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
+import exceptions.DeckException;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
@@ -290,7 +291,16 @@ public class PokerTableController {
 		}
 
 	}
-
+	///////////
+	@FXML
+	public void draw(ActionEvent event) throws DeckException {
+		Action act = new Action(eAction.Draw, mainApp.getPlayer());
+		Deck deck = mainApp.getpHub().getdeck();
+		deck.Draw();
+		mainApp.messageSend(act);
+	}
+	///////
+		
 	@FXML
 	void btnStart_Click(ActionEvent event) {
 		Action act = new Action(eAction.StartGame, mainApp.getPlayer());
